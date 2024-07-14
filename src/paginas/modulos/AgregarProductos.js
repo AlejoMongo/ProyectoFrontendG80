@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ContentHeader from "../../Componentes/ContentHeader";
 import Footer from "../../Componentes/Footer";
 import Navbar from "../../Componentes/Navbar";
 import SidebarContainer from "../../Componentes/SidebarContainer";
 import APIInvoke from "../../configuracion/APIInvoke";
 import swal from "sweetalert";
-//import { Navigate } from "react-router-dom";
-
 
 const AgregarProductos = () => {
   const [producto, setProducto] = useState({
@@ -19,6 +17,8 @@ const AgregarProductos = () => {
     garantia: "",
     valor: ""
   });
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.getElementById("equipo").focus();
@@ -44,7 +44,7 @@ const AgregarProductos = () => {
 
     try {
       const response = await APIInvoke.invokePOST("/api/productos", data);
-      const idProducto = response.data._id;
+      const idProducto = response._id;
 
       if (!idProducto) {
         throw new Error("Hubo un error al agregar el producto");
@@ -52,7 +52,7 @@ const AgregarProductos = () => {
 
       swal({
         title: 'Información',
-        text: 'El cliente fue creado con éxito',
+        text: 'El producto fue creado con éxito',
         icon: 'success',
         buttons: {
           confirm: {
@@ -65,7 +65,7 @@ const AgregarProductos = () => {
         }
       });
 
-      Navigate("/productos");
+      navigate("/productos");
 
     } catch (error) {
       swal({

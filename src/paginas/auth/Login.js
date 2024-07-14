@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import APIInvoke from '../../configuracion/APIInvoke';
@@ -21,8 +21,12 @@ function Login() {
         });
     };
 
+    const emailRef = useRef(null);
+
     useEffect(() => {
-        document.getElementById("email").focus();
+        if (emailRef.current) {
+            emailRef.current.focus();
+        }
     }, []);
 
     const IniciarSesion = async () => {
@@ -67,6 +71,7 @@ function Login() {
 
                 // Guardar el token en el local storage
                 localStorage.setItem('token', jwt);
+                console.log("Token guardado:", localStorage.getItem("token"));
 
                 // Nos logueamos y nos dirigimos a la página home
                 navigate('/home');
@@ -83,11 +88,11 @@ function Login() {
         <div className="hold-transition login-page">
             <div className="login-box">
                 <div className="login-logo">
-                    <Link to="#" style={{ fontWeight: 'bold' }}>Iniciar sesión</Link>
+                    <Link to="#" style={{ fontWeight: 'bold' }}>Bienvenidos a Nuestro Portal</Link>
                 </div>
                 <div className='card'>
                     <div className='card-body login-card-body'>
-                        <p className='login-box-msg'>Ingrese los datos para loguearse</p>
+                        <p className='login-box-msg'>Ingresa tus datos para el Ingreeso </p>
                         <form onSubmit={onSubmit}>
 
                             <div className='input-group mb-3'>
@@ -95,6 +100,7 @@ function Login() {
                                     type='email'
                                     className='form-control'
                                     placeholder='Email'
+                                    ref={emailRef}
                                     id='email'
                                     name='email'
                                     value={email}

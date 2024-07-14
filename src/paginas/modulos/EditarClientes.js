@@ -34,13 +34,13 @@ const EditarClientes = () => {
         setDireccion(response.direccion);
       } catch (error) {
         console.error("Error al obtener datos del cliente:", error);
-        // Manejar el error según sea necesario
+        
       }
     };
 
-    getCliente(); // Llamar a la función para obtener los datos del cliente
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]); // Dependencia para ejecutar useEffect cuando cambie el ID
+    getCliente(); 
+    
+  }, [id]);
 
   const modificarClientes = async (e) => {
     e.preventDefault();
@@ -54,10 +54,10 @@ const EditarClientes = () => {
         nit,
         direccion
       });
-      navigate('/clientes'); // Redirigir a la página de clientes después de la actualización exitosa
+      navigate('/clientes'); 
     } catch (error) {
       console.error("Error al modificar cliente:", error);
-      // Manejar el error según sea necesario
+      
     }
   };
 

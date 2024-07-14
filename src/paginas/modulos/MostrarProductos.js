@@ -98,11 +98,11 @@ const MostrarProductos = () => {
               <table className="table table-bordered">
                 <thead>
                   <tr>
-                    <th style={{ width: "20%" }}>Equipo</th>
+                    <th style={{ width: "15%" }}>Equipo</th>
                     <th style={{ width: "15%" }}>Procesador</th>
                     <th style={{ width: "15%" }}>Memoria RAM</th>
                     <th style={{ width: "15%" }}>Tamaño Disco</th>
-                    <th style={{ width: "15%" }}>Tipo Pantalla</th>
+                    <th style={{ width: "10%" }}>Tipo Pantalla</th>
                     <th style={{ width: "10%" }}>Garantía</th>
                     <th style={{ width: "10%" }}>Valor</th>
                     <th style={{ width: "10%" }}>Acciones</th>
@@ -114,7 +114,7 @@ const MostrarProductos = () => {
                       <td>{producto.equipo}</td>
                       <td>{producto.procesador}</td>
                       <td>{producto.memoriaRam}</td>
-                      <td>{producto.tamañoDisco}</td>
+                      <td>{producto.tamanoDisco}</td>
                       <td>{producto.tipoPantalla}</td>
                       <td>{producto.garantia}</td>
                       <td>{producto.valor}</td>
